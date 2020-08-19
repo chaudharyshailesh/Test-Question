@@ -1,5 +1,4 @@
 # 1 Test-Question
-
 package com.textexp;
 
 import java.util.ArrayList;
@@ -16,24 +15,14 @@ public class Solution3LargestNo {
 				arraylist.add("#"+a[0]);
 				arraylist.add("#"+a[1]);
 			} else {
-				temp = a[1];
-				a[1] = a[0];
-				a[0] = temp;
+				swap(a, 0,1);
 				arraylist.add("#"+a[0]);
 				arraylist.add("#"+a[1]);
 			}
 			return arraylist;
 		} else {
 
-			for (int i = 0; i < len; i++) {
-				for (int j = i + 1; j < len; j++) {
-					if (a[i].length() < a[j].length()) {
-						temp = a[i];
-						a[i] = a[j];
-						a[j] = temp;
-					}
-				}
-			}
+			bubbleSort(a);
 			
 			for (int k = 0; k < 3; k++) {
 				arraylist.add("#" + a[k]);
@@ -41,6 +30,25 @@ public class Solution3LargestNo {
 			return arraylist;
 		}
 	}
+	
+    public static void bubbleSort(String[] arr) {
+        boolean swapped = false;
+        do {
+            swapped = false;
+            for (int i = 0; i < arr.length - 1; i += 1) {
+                if (arr[i].length() < arr[i + 1].length()) {
+                    swap(arr, i, i + 1);
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+
+    public static void swap(String[] arr, int index0, int index1) {
+        String temp = arr[index0];
+        arr[index0] = arr[index1];
+        arr[index1] = temp;
+    }
 
 	public static void main(String[] args) {
 		// String s="Why You Will Probably Pay More for Your Christmas Tree This Year";
@@ -54,6 +62,7 @@ public class Solution3LargestNo {
 		sc.close();
 	}
 }
+
 
 
 # 2 Test-Question
